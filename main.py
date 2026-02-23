@@ -20,7 +20,7 @@ def send_message(text):
     requests.post(url, data=data)
 
 def get_weather():
-    url = f"https://api.openweathermap.org/data/2.5/weather?q=Taipei&appid={WEATHER_API_KEY}&units=metric"
+    url = f"https://api.openweathermap.org/data/2.5/weather?q=Taipei&appid={WEATHER_API_KEY}&units=metric&lang=zh_tw"
     r = requests.get(url).json()
     temp = r["main"]["temp"]
     desc = r["weather"][0]["description"]
@@ -48,5 +48,6 @@ def home():
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=10000)
+
 
 
