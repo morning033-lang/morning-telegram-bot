@@ -24,8 +24,8 @@ def get_weather():
     r = requests.get(url).json()
     temp = r["main"]["temp"]
     desc = r["weather"][0]["description"]
-    return f"🌤 天氣：{desc}，氣溫 {temp}°C"
-
+    return f"☁️ 天氣：{desc}\n🌡 氣溫：{temp}°C"
+    
 def morning_report():
     today = datetime.datetime.now().strftime("%Y-%m-%d")
     weather = get_weather()
@@ -33,12 +33,17 @@ def morning_report():
     send_message(message)
 
 def scheduler():
+    last_sent_date = None
     while True:
-        now = datetime.datetime.now().strftime("%H:%M")
-        if now == "06:30":
+        now = datetime.datetime.now()
+        hm = now.strftime("%H:%M")
+        today = now.strftime("%Y-%m-%d")
+
+        if hm == "06:30" and last_sent_date != today:
             morning_report()
-            time.sleep(60)
-        time.sleep(10)
+            last_sent_date = today
+
+        time.sleep(20)
 
 threading.Thread(target=scheduler).start()
 
@@ -48,6 +53,7 @@ def home():
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=10000)
+
 
 
 
