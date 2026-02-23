@@ -39,7 +39,7 @@ def scheduler():
         hm = now.strftime("%H:%M")
         today = now.strftime("%Y-%m-%d")
 
-        if hm == "06:30" and last_sent_date != today:
+        if hm == "20:23" and last_sent_date != today:
             morning_report()
             last_sent_date = today
 
@@ -53,6 +53,7 @@ def home():
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=10000)
+
 
 
 
