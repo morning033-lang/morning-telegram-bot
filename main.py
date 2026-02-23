@@ -5,9 +5,9 @@ from flask import Flask
 import threading
 import time
 
-TG_TOKEN = os.environ.get("8516264138:AAGDm7nlHcHTYYKtbwCYpGkZvOOg9ybUQO8")
-CHAT_ID = os.environ.get("242854757")
-WEATHER_API_KEY = os.environ.get("bf3254ec88ac50ff20aa6482418ed798")
+TG_TOKEN = os.environ.get("TG_TOKEN")
+CHAT_ID = os.environ.get("CHAT_ID")
+WEATHER_API_KEY = os.environ.get("WEATHER_API_KEY")
 
 app = Flask(__name__)
 
@@ -48,3 +48,4 @@ def home():
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=10000)
+
